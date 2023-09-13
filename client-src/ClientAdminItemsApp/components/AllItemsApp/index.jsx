@@ -192,9 +192,10 @@ export default class AllItemsApp extends React.Component {
     const { settings } = feed;
     const { webGlobalSettings } = settings;
     const publicBucketUrl = webGlobalSettings.publicBucketUrl || "/";
-    const filteredItems = items.filter((item) =>
-      item.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
+    const filteredItems = items.filter(item => 
+        item.title && item.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
     );
+
     const data = filteredItems.map((item) => ({
       status: item.status || STATUSES.PUBLISHED,
       pubDateMs: item.pubDateMs,
