@@ -62,8 +62,7 @@ const columns = [
   }),
 ];
 
-function ItemListTable({ data, feed }) {
-  const [searchValue, setSearchValue] = useState(""); // Add this line
+function ItemListTable({ data, feed, searchValue, setSearchValue }) {
   let nextUrl;
   let prevUrl;
   if (feed.items_next_cursor) {
@@ -101,11 +100,11 @@ function ItemListTable({ data, feed }) {
         />
       </div>
       <div className="mb-4">
-        <input
+         <input
           type="text"
           placeholder="Search by title..."
-          value={searchValue} // Update this line
-          onChange={(e) => setSearchValue(e.target.value)} // And this line
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)} 
           className="p-2 border rounded w-full"
         />
       </div>
@@ -266,7 +265,14 @@ export default class AllItemsApp extends React.Component {
           </div>
           <div>
             {data.length > 0 ? (
-              <ItemListTable data={data} feed={feed} />
+              <ItemListTable
+                data={data}
+                feed={feed}
+                searchValue={this.state.searchValue}
+                setSearchValue={(value) =>
+                  this.setState({ searchValue: value })
+                }
+              />
             ) : (
               <div>
                 <div className="mb-8">No items yet.</div>
