@@ -231,22 +231,14 @@ export default class AllItemsApp extends React.Component {
         <div className="flex flex-col items-center">
           {isValidMediaFile(item.mediaFile) ? (
             <div>
-              {item.mediaFile.category === ENCLOSURE_CATEGORIES.IMAGE ? (
-                <img
-                  src={urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)}
-                  alt="Media"
-                />
-              ) : (
-                <ExternalLink
-                  url={
-                    item.mediaFile.category ===
-                    ENCLOSURE_CATEGORIES.EXTERNAL_URL
-                      ? item.mediaFile.url
-                      : urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)
-                  }
-                  text={ENCLOSURE_CATEGORIES_DICT[item.mediaFile.category].name}
-                />
-              )}
+              <img
+                src={
+                  item.mediaFile.category === ENCLOSURE_CATEGORIES.EXTERNAL_URL
+                    ? item.mediaFile.url
+                    : urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)
+                }
+                alt={ENCLOSURE_CATEGORIES_DICT[item.mediaFile.category].name}
+              />
               {[
                 ENCLOSURE_CATEGORIES.AUDIO,
                 ENCLOSURE_CATEGORIES.VIDEO,
