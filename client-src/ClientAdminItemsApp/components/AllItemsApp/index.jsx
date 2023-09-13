@@ -63,6 +63,7 @@ const columns = [
 ];
 
 function ItemListTable({ data, feed, searchValue, setSearchValue }) {
+  const [searchValue, setSearchValue] = useState(""); // Add this line
   let nextUrl;
   let prevUrl;
   if (feed.items_next_cursor) {
@@ -100,11 +101,11 @@ function ItemListTable({ data, feed, searchValue, setSearchValue }) {
         />
       </div>
       <div className="mb-4">
-         <input
+        <input
           type="text"
           placeholder="Search by title..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)} 
+          value={searchValue} // Update this line
+          onChange={(e) => setSearchValue(e.target.value)} // And this line
           className="p-2 border rounded w-full"
         />
       </div>
@@ -230,14 +231,22 @@ export default class AllItemsApp extends React.Component {
         <div className="flex flex-col items-center">
           {isValidMediaFile(item.mediaFile) ? (
             <div>
-              <ExternalLink
-                url={
-                  item.mediaFile.category === ENCLOSURE_CATEGORIES.EXTERNAL_URL
-                    ? item.mediaFile.url
-                    : urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)
-                }
-                text={ENCLOSURE_CATEGORIES_DICT[item.mediaFile.category].name}
-              />
+              {item.mediaFile.category === ENCLOSURE_CATEGORIES.IMAGE ? (
+                <img
+                  src={urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)}
+                  alt="Media"
+                />
+              ) : (
+                <ExternalLink
+                  url={
+                    item.mediaFile.category ===
+                    ENCLOSURE_CATEGORIES.EXTERNAL_URL
+                      ? item.mediaFile.url
+                      : urlJoinWithRelative(publicBucketUrl, item.mediaFile.url)
+                  }
+                  text={ENCLOSURE_CATEGORIES_DICT[item.mediaFile.category].name}
+                />
+              )}
               {[
                 ENCLOSURE_CATEGORIES.AUDIO,
                 ENCLOSURE_CATEGORIES.VIDEO,
