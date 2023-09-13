@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import AdminNavApp from "../../../components/AdminNavApp";
 import {
   unescapeHtml,
@@ -62,6 +63,7 @@ const columns = [
 ];
 
 function ItemListTable({ data, feed }) {
+  const [searchValue, setSearchValue] = useState(""); // Add this line
   let nextUrl;
   let prevUrl;
   if (feed.items_next_cursor) {
@@ -102,8 +104,8 @@ function ItemListTable({ data, feed }) {
         <input
           type="text"
           placeholder="Search by title..."
-          value={this.state.searchValue}
-          onChange={(e) => this.setState({ searchValue: e.target.value })}
+          value={searchValue} // Update this line
+          onChange={(e) => setSearchValue(e.target.value)} // And this line
           className="p-2 border rounded w-full"
         />
       </div>
@@ -192,10 +194,11 @@ export default class AllItemsApp extends React.Component {
     const { settings } = feed;
     const { webGlobalSettings } = settings;
     const publicBucketUrl = webGlobalSettings.publicBucketUrl || "/";
-    const filteredItems = items.filter(item => 
-        item.title && item.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
+    const filteredItems = items.filter(
+      (item) =>
+        item.title &&
+        item.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
     );
-
     const data = filteredItems.map((item) => ({
       status: item.status || STATUSES.PUBLISHED,
       pubDateMs: item.pubDateMs,
