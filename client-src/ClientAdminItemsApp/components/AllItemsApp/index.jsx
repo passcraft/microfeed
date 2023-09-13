@@ -63,7 +63,7 @@ const columns = [
 ];
 
 function ItemListTable({ data, feed, searchValue, setSearchValue }) {
-  const [searchValue, setSearchValue] = useState(""); // Add this line
+  
   let nextUrl;
   let prevUrl;
   if (feed.items_next_cursor) {
