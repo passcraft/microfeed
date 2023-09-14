@@ -37,16 +37,7 @@ const columns = [
   }),
   columnHelper.accessor("status", {
     header: "Status",
-    cell: (info) => (
-      <div
-        className={clsx(
-          "text-center font-semibold",
-          info.getValue() === STATUSES.PUBLISHED ? "text-brand-light" : ""
-        )}
-      >
-        {ITEM_STATUSES_DICT[info.getValue()].name}
-      </div>
-    ),
+     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("pubDateMs", {
     header: "Published date",
