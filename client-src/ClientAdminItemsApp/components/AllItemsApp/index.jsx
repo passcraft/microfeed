@@ -191,6 +191,7 @@ export default class AllItemsApp extends React.Component {
 
   render() {
     const { items, feed, onboardingResult } = this.state;
+    console.log("items",items)
     const { settings } = feed;
     const { webGlobalSettings } = settings;
     const publicBucketUrl = webGlobalSettings.publicBucketUrl || "/";
