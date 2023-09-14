@@ -106,7 +106,7 @@ function ItemListTable({ data, feed, searchValue, setSearchValue }) {
           placeholder="Search by title..."
           value={searchValue} // Update this line
           onChange={(e) => setSearchValue(e.target.value)} // And this line
-          className="p-2 border rounded w-full"
+          className="p-2 border rounded w-1/2 h-1/2"
         />
       </div>
       <table className="border-collapse text-helper-color text-sm w-full">
