@@ -121,7 +121,7 @@ function ItemListTable({ data, feed, searchValue, setSearchValue }) {
                   key={cell.id}
                   className={clsx(
                     "border border-slate-300 py-2 px-4 break-all",
-                    cell.column.id === "title" ? "max-w-md" : ""
+                    cell.column.id === "title" ? "max-w-md w-1/3" : ""
                   )}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -194,13 +194,7 @@ export default class AllItemsApp extends React.Component {
               {item.title || "untitled"}
             </a>
           </div>
-          <div className="mt-2 flex items-center flex-col w-1/3">
-            <div className="text-muted-color text-sm flex-1">id: {item.id}</div>
-            <ExternalLink
-              linkClass="text-xs text-helper-color"
-              url={PUBLIC_URLS.webItem(item.id, item.title)}
-              text="Public page"
-            />
+          <div className="mt-2 flex items-center flex-col">
             <div className="ml-4 flex-none">
               <a
                 className="block text-xs text-helper-color"
