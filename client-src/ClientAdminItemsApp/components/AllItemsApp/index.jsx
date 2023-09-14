@@ -194,7 +194,7 @@ export default class AllItemsApp extends React.Component {
               {item.title || "untitled"}
             </a>
           </div>
-          <div className="mt-2 flex items-center flex-col">
+          <div className="mt-2 flex items-center flex-col w-1/3">
             <div className="text-muted-color text-sm flex-1">id: {item.id}</div>
             <ExternalLink
               linkClass="text-xs text-helper-color"
