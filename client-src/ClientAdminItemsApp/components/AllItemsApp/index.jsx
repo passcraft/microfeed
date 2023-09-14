@@ -36,17 +36,10 @@ const columns = [
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("status", {
-    header: "Status",
+    header: "description",
      cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("pubDateMs", {
-    header: "Published date",
-    cell: (info) => (
-      <div className="text-center">
-        {msToDatetimeLocalString(info.getValue())}
-      </div>
-    ),
-  }),
+  
   columnHelper.accessor("mediaFile", {
     header: "Media file",
     cell: (info) => info.getValue(),
@@ -222,7 +215,7 @@ export default class AllItemsApp extends React.Component {
       mediaFile: (
         <div className="flex flex-col items-center">
           {isValidMediaFile(item.mediaFile) ? (
-            <div>
+            <div className="contents">
               <img
                 className = "w-1/2 h-1/2"
                 src={
