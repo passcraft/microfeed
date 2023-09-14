@@ -100,13 +100,13 @@ function ItemListTable({ data, feed, searchValue, setSearchValue }) {
           }}
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 ">
         <input
           type="text"
           placeholder="Search by title..."
           value={searchValue} // Update this line
           onChange={(e) => setSearchValue(e.target.value)} // And this line
-          className="p-2 border rounded w-1/2 h-1/2"
+          className="p-2 border rounded "
         />
       </div>
       <table className="border-collapse text-helper-color text-sm w-full">
@@ -198,10 +198,10 @@ export default class AllItemsApp extends React.Component {
     const filteredItems = items.filter(
       (item) =>
         item.title &&
-        item.title.toLowerCase().includes(this.state.searchValue.toLowerCase())
+        item.description.includes(this.state.searchValue.toLowerCase())
     );
     const data = filteredItems.map((item) => ({
-      status: item.status || STATUSES.PUBLISHED,
+      status: item.description,
       pubDateMs: item.pubDateMs,
       title: (
         <div>
@@ -233,6 +233,7 @@ export default class AllItemsApp extends React.Component {
           {isValidMediaFile(item.mediaFile) ? (
             <div>
               <img
+                className = "w-1/2 h-1/2"
                 src={
                   item.mediaFile.category === ENCLOSURE_CATEGORIES.EXTERNAL_URL
                     ? item.mediaFile.url
