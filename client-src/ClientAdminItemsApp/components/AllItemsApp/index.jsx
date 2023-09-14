@@ -201,7 +201,7 @@ export default class AllItemsApp extends React.Component {
         item.description.includes(this.state.searchValue.toLowerCase())
     );
     const data = filteredItems.map((item) => ({
-      status: item.status ,
+      status: item.description ,
       pubDateMs: item.pubDateMs,
       title: (
         <div>
@@ -264,7 +264,6 @@ export default class AllItemsApp extends React.Component {
       >
         <form className="lh-page-card grid grid-cols-1 gap-4">
           <div className="lh-page-title">
-            {NAV_ITEMS_DICT[NAV_ITEMS.ALL_ITEMS].name}
           </div>
           <div>
             {data.length > 0 ? (
