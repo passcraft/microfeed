@@ -201,7 +201,7 @@ export default class AllItemsApp extends React.Component {
         item.description.includes(this.state.searchValue.toLowerCase())
     );
     const data = filteredItems.map((item) => ({
-      status: item.description,
+      status: item.status ,
       pubDateMs: item.pubDateMs,
       title: (
         <div>
