@@ -71,10 +71,7 @@ export default class AdminNavApp extends React.Component {
               target="_blank"
               className="hover:opacity-50"
             >
-              <img
-                src="/assets/brands/yaar/horizontal-logo.png"
-                className="w-full"
-              />
+              <h1 className="font-bold text-4xl">yaar</h1>
             </a>
           </div>
           <div className="col-span-10 flex items-center">

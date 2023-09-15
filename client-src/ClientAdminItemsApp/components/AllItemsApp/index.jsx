@@ -37,9 +37,9 @@ const columns = [
   }),
   columnHelper.accessor("status", {
     header: "description",
-     cell: (info) => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  
+
   columnHelper.accessor("mediaFile", {
     header: "Media file",
     cell: (info) => info.getValue(),
@@ -47,7 +47,6 @@ const columns = [
 ];
 
 function ItemListTable({ data, feed, searchValue, setSearchValue }) {
-  
   let nextUrl;
   let prevUrl;
   if (feed.items_next_cursor) {
@@ -175,17 +174,17 @@ export default class AllItemsApp extends React.Component {
 
   render() {
     const { items, feed, onboardingResult } = this.state;
-    console.log("items",items)
+    console.log("items", items);
     const { settings } = feed;
     const { webGlobalSettings } = settings;
     const publicBucketUrl = webGlobalSettings.publicBucketUrl || "/";
     const filteredItems = items.filter(
       (item) =>
-        item.title &&
+        item.description &&
         item.description.includes(this.state.searchValue.toLowerCase())
     );
     const data = filteredItems.map((item) => ({
-      status: item.description ,
+      status: item.description,
       pubDateMs: item.pubDateMs,
       title: (
         <div>
@@ -211,7 +210,7 @@ export default class AllItemsApp extends React.Component {
           {isValidMediaFile(item.mediaFile) ? (
             <div className="contents">
               <img
-                className = "w-1/2 h-1/2"
+                className="w-1/2 h-1/2"
                 src={
                   item.mediaFile.category === ENCLOSURE_CATEGORIES.EXTERNAL_URL
                     ? item.mediaFile.url
@@ -241,8 +240,7 @@ export default class AllItemsApp extends React.Component {
         onboardingResult={onboardingResult}
       >
         <form className="lh-page-card grid grid-cols-1 gap-4">
-          <div className="lh-page-title">
-          </div>
+          <div className="lh-page-title"></div>
           <div>
             {data.length > 0 ? (
               <ItemListTable
