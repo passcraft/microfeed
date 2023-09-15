@@ -1,7 +1,7 @@
-import {XMLBuilder} from "fast-xml-parser";
-import {PUBLIC_URLS, secondsToHHMMSS} from "../../common-src/StringUtils";
-import {msToUtcString} from "../../common-src/TimeUtils";
-import {OUR_BRAND} from "../../common-src/Constants";
+import { XMLBuilder } from "fast-xml-parser";
+import { PUBLIC_URLS, secondsToHHMMSS } from "../../common-src/StringUtils";
+import { msToUtcString } from "../../common-src/TimeUtils";
+import { OUR_BRAND } from "../../common-src/Constants";
 
 export default class FeedPublicRssBuilder {
   constructor(jsonData, baseUrl) {
@@ -10,82 +10,82 @@ export default class FeedPublicRssBuilder {
   }
 
   _buildItemsRss() {
-   const items = [];
-   this.jsonData.items.forEach((item) => {
-     const _microfeed = item._microfeed || {};
-     const itemJson = {
-       'title': item.title || 'untitled',
-       'guid': item.id,
-       'pubDate': msToUtcString(item._microfeed.date_published_ms),
-       'itunes:explicit': _microfeed['itunes:explicit'] ? 'true' : 'false',
-     };
-     if (item['content_html']) {
-       itemJson['description'] = {
-         '@cdata': item['content_html'],
-       };
-     }
-     if (item['url']) {
-       itemJson['link'] = item['url'];
-     }
+    const items = [];
+    this.jsonData.items.forEach((item) => {
+      const _yaar = item._yaar || {};
+      const itemJson = {
+        'title': item.title || 'untitled',
+        'guid': item.id,
+        'pubDate': msToUtcString(item._yaar.date_published_ms),
+        'itunes:explicit': _yaar['itunes:explicit'] ? 'true' : 'false',
+      };
+      if (item['content_html']) {
+        itemJson['description'] = {
+          '@cdata': item['content_html'],
+        };
+      }
+      if (item['url']) {
+        itemJson['link'] = item['url'];
+      }
 
-     if (item.image) {
-       itemJson['itunes:image'] = {
-         '@_href': item.image,
-       };
-     }
+      if (item.image) {
+        itemJson['itunes:image'] = {
+          '@_href': item.image,
+        };
+      }
 
-     if (_microfeed['itunes:title'] && _microfeed['itunes:title'].trim().length > 0) {
-       itemJson['itunes:title'] = _microfeed['itunes:title'].trim();
-     }
+      if (_yaar['itunes:title'] && _yaar['itunes:title'].trim().length > 0) {
+        itemJson['itunes:title'] = _yaar['itunes:title'].trim();
+      }
 
-     if (_microfeed['itunes:block']) {
-       itemJson['itunes:block'] = 'Yes';
-     }
+      if (_yaar['itunes:block']) {
+        itemJson['itunes:block'] = 'Yes';
+      }
 
-     if (_microfeed['itunes:season']) {
-       itemJson['itunes:season'] = _microfeed['itunes:season'];
-     }
+      if (_yaar['itunes:season']) {
+        itemJson['itunes:season'] = _yaar['itunes:season'];
+      }
 
-     if (_microfeed['itunes:episode']) {
-       itemJson['itunes:episode'] = _microfeed['itunes:episode'];
-     }
+      if (_yaar['itunes:episode']) {
+        itemJson['itunes:episode'] = _yaar['itunes:episode'];
+      }
 
-     if (['full', 'trailer', 'bonus'].includes(_microfeed['itunes:episodeType'])) {
-       itemJson['itunes:episodeType'] = _microfeed['itunes:episodeType'];
-     }
+      if (['full', 'trailer', 'bonus'].includes(_yaar['itunes:episodeType'])) {
+        itemJson['itunes:episodeType'] = _yaar['itunes:episodeType'];
+      }
 
-     const {attachments} = item;
-     let mediaFile;
-     if (attachments && attachments[0]) {
-       mediaFile = attachments[0];
-     }
-     if (mediaFile && mediaFile.url && mediaFile.url.length > 0) {
-       itemJson.enclosure = {
-         '@_url': mediaFile.url,
-       };
-       if (mediaFile.mime_type) {
-         itemJson.enclosure['@_type'] = mediaFile.mime_type;
-       }
-       if (mediaFile.size_in_byte && mediaFile.size_in_byte > 0) {
-         itemJson.enclosure['@_length'] = mediaFile.size_in_byte;
-       }
-       if (mediaFile.duration_in_seconds && mediaFile.duration_in_seconds > 0) {
-         itemJson['itunes:duration'] = secondsToHHMMSS(mediaFile.duration_in_seconds);
-       }
-     }
-     items.push(itemJson);
-   });
-   return items;
- }
+      const { attachments } = item;
+      let mediaFile;
+      if (attachments && attachments[0]) {
+        mediaFile = attachments[0];
+      }
+      if (mediaFile && mediaFile.url && mediaFile.url.length > 0) {
+        itemJson.enclosure = {
+          '@_url': mediaFile.url,
+        };
+        if (mediaFile.mime_type) {
+          itemJson.enclosure['@_type'] = mediaFile.mime_type;
+        }
+        if (mediaFile.size_in_byte && mediaFile.size_in_byte > 0) {
+          itemJson.enclosure['@_length'] = mediaFile.size_in_byte;
+        }
+        if (mediaFile.duration_in_seconds && mediaFile.duration_in_seconds > 0) {
+          itemJson['itunes:duration'] = secondsToHHMMSS(mediaFile.duration_in_seconds);
+        }
+      }
+      items.push(itemJson);
+    });
+    return items;
+  }
 
   _buildChannelRss() {
-    const _microfeed = this.jsonData._microfeed || {};
+    const _yaar = this.jsonData._yaar || {};
     const channelRss = {
       'title': this.jsonData.title,
       'language': this.jsonData.language,
       'generator': OUR_BRAND.domain,
-      'itunes:type': _microfeed['itunes:type'],
-      'itunes:explicit': _microfeed['itunes:explicit'] ? 'true' : 'false',
+      'itunes:type': _yaar['itunes:type'],
+      'itunes:explicit': _yaar['itunes:explicit'] ? 'true' : 'false',
     };
     channelRss['atom:link'] = {
       '@_rel': 'self',
@@ -96,16 +96,16 @@ export default class FeedPublicRssBuilder {
     if (this.jsonData.home_page_url) {
       linksTags.push(this.jsonData.home_page_url);
     }
-    if (this.jsonData._microfeed.items_next_cursor) {
-      const {items_next_cursor, items_sort_order} = this.jsonData._microfeed;
+    if (this.jsonData._yaar.items_next_cursor) {
+      const { items_next_cursor, items_sort_order } = this.jsonData._yaar;
       linksTags.push({
         '@_rel': 'next',
         '@_href': `${PUBLIC_URLS.rssFeed(this.baseUrl)}?next_cursor=${items_next_cursor}&sort=${items_sort_order}`,
         '@_type': 'application/rss+xml',
       });
     }
-    if (this.jsonData._microfeed.items_prev_cursor) {
-      const {items_prev_cursor, items_sort_order} = this.jsonData._microfeed;
+    if (this.jsonData._yaar.items_prev_cursor) {
+      const { items_prev_cursor, items_sort_order } = this.jsonData._yaar;
       linksTags.push({
         '@_rel': 'prev',
         '@_href': `${PUBLIC_URLS.rssFeed(this.baseUrl)}?prev_cursor=${items_prev_cursor}&sort=${items_sort_order}`,
@@ -131,32 +131,32 @@ export default class FeedPublicRssBuilder {
         'link': this.jsonData.home_page_url,
       };
     }
-    if (_microfeed.copyright && _microfeed.copyright.trim().length > 0) {
-      channelRss.copyright = _microfeed.copyright.trim();
+    if (_yaar.copyright && _yaar.copyright.trim().length > 0) {
+      channelRss.copyright = _yaar.copyright.trim();
     }
-    if (_microfeed['itunes:email'] && _microfeed['itunes:email'].trim().length > 0) {
+    if (_yaar['itunes:email'] && _yaar['itunes:email'].trim().length > 0) {
       channelRss['itunes:owner'] = {
-        'itunes:email': _microfeed['itunes:email'].trim(),
+        'itunes:email': _yaar['itunes:email'].trim(),
       };
       if (channelRss['itunes:author']) {
         channelRss['itunes:owner']['itunes:name'] = channelRss['itunes:author'];
       }
     }
-    if (_microfeed['itunes:new-feed-url'] && _microfeed['itunes:new-feed-url'].trim().length > 0) {
-      channelRss['itunes:new-feed-url'] = _microfeed['itunes:new-feed-url'].trim();
+    if (_yaar['itunes:new-feed-url'] && _yaar['itunes:new-feed-url'].trim().length > 0) {
+      channelRss['itunes:new-feed-url'] = _yaar['itunes:new-feed-url'].trim();
     }
-    if (_microfeed['itunes:block']) {
+    if (_yaar['itunes:block']) {
       channelRss['itunes:block'] = 'Yes';
     }
-    if (_microfeed['itunes:complete']) {
+    if (_yaar['itunes:complete']) {
       channelRss['itunes:complete'] = 'Yes';
     }
-    if (_microfeed['itunes:title'] && _microfeed['itunes:title'].trim().length > 0) {
-      channelRss['itunes:title'] = _microfeed['itunes:title'].trim();
+    if (_yaar['itunes:title'] && _yaar['itunes:title'].trim().length > 0) {
+      channelRss['itunes:title'] = _yaar['itunes:title'].trim();
     }
-    if (_microfeed['categories'] && _microfeed['categories'].length > 0) {
+    if (_yaar['categories'] && _yaar['categories'].length > 0) {
       const categories = [];
-      _microfeed['categories'].forEach((c) => {
+      _yaar['categories'].forEach((c) => {
         let cat = {
           '@_text': c.name,
         };

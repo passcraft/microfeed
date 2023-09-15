@@ -1,5 +1,5 @@
-import {randomShortUUID, removeHostFromUrl} from "../../common-src/StringUtils";
-import {ENCLOSURE_CATEGORIES, ENCLOSURE_CATEGORIES_DICT, LANGUAGE_CODES_LIST} from "../../common-src/Constants";
+import { randomShortUUID, removeHostFromUrl } from "../../common-src/StringUtils";
+import { ENCLOSURE_CATEGORIES, ENCLOSURE_CATEGORIES_DICT, LANGUAGE_CODES_LIST } from "../../common-src/Constants";
 
 const LANGUAGE_CODES = LANGUAGE_CODES_LIST.map((lc) => lc.code);
 
@@ -22,8 +22,8 @@ export default class FeedCrudManager {
     }
 
     if (item.attachment &&
-        ENCLOSURE_CATEGORIES_DICT[item.attachment.category] &&
-        item.attachment.url) {
+      ENCLOSURE_CATEGORIES_DICT[item.attachment.category] &&
+      item.attachment.url) {
       const mediaFile = {};
       if (item.attachment.category) {
         mediaFile.category = item.attachment.category;
@@ -64,32 +64,32 @@ export default class FeedCrudManager {
       internalSchema.pubDateMs = item.date_published_ms;
     }
 
-    if (!item._microfeed) {
-      item._microfeed = {};
+    if (!item._yaar) {
+      item._yaar = {};
     }
 
-    if ('itunes:title' in item._microfeed) {
-      internalSchema['itunes:title'] = item._microfeed['itunes:title'];
+    if ('itunes:title' in item._yaar) {
+      internalSchema['itunes:title'] = item._yaar['itunes:title'];
     }
 
-    if (typeof item._microfeed['itunes:block'] === 'boolean') {
-      internalSchema['itunes:block'] = item._microfeed['itunes:block'];
+    if (typeof item._yaar['itunes:block'] === 'boolean') {
+      internalSchema['itunes:block'] = item._yaar['itunes:block'];
     }
 
-    if (['full', 'trailer', 'bonus'].includes(item._microfeed['itunes:episodeType'])) {
-      internalSchema['itunes:episodeType'] = item._microfeed['itunes:episodeType'];
+    if (['full', 'trailer', 'bonus'].includes(item._yaar['itunes:episodeType'])) {
+      internalSchema['itunes:episodeType'] = item._yaar['itunes:episodeType'];
     }
 
-    if (item._microfeed['itunes:season']) {
-      internalSchema['itunes:season'] = item._microfeed['itunes:season'];
+    if (item._yaar['itunes:season']) {
+      internalSchema['itunes:season'] = item._yaar['itunes:season'];
     }
 
-    if (item._microfeed['itunes:episode']) {
-      internalSchema['itunes:episode'] = item._microfeed['itunes:episode'];
+    if (item._yaar['itunes:episode']) {
+      internalSchema['itunes:episode'] = item._yaar['itunes:episode'];
     }
 
-    if (typeof item._microfeed['itunes:explicit'] === 'boolean') {
-      internalSchema['itunes:explicit'] = item._microfeed['itunes:explicit'];
+    if (typeof item._yaar['itunes:explicit'] === 'boolean') {
+      internalSchema['itunes:explicit'] = item._yaar['itunes:explicit'];
     }
     return internalSchema;
   }
@@ -117,26 +117,26 @@ export default class FeedCrudManager {
     if (typeof channel.expired === 'boolean') {
       internalSchema['itunes:complete'] = channel.expired;
     }
-    if (!channel._microfeed) {
-      channel._microfeed = {};
+    if (!channel._yaar) {
+      channel._yaar = {};
     }
-    if (typeof channel._microfeed['itunes:explicit'] === 'boolean') {
-      internalSchema['itunes:explicit'] = channel._microfeed['itunes:explicit'];
+    if (typeof channel._yaar['itunes:explicit'] === 'boolean') {
+      internalSchema['itunes:explicit'] = channel._yaar['itunes:explicit'];
     }
-    if (channel._microfeed['itunes:title']) {
-      internalSchema['itunes:title'] = channel._microfeed['itunes:title'];
+    if (channel._yaar['itunes:title']) {
+      internalSchema['itunes:title'] = channel._yaar['itunes:title'];
     }
-    if (typeof channel._microfeed['itunes:block'] === 'boolean') {
-      internalSchema['itunes:block'] = channel._microfeed['itunes:block'];
+    if (typeof channel._yaar['itunes:block'] === 'boolean') {
+      internalSchema['itunes:block'] = channel._yaar['itunes:block'];
     }
-    if (['episodic', 'serial'].includes(channel._microfeed['itunes:type'])) {
-      internalSchema['itunes:type'] = channel._microfeed['itunes:type'];
+    if (['episodic', 'serial'].includes(channel._yaar['itunes:type'])) {
+      internalSchema['itunes:type'] = channel._yaar['itunes:type'];
     }
-    if (channel._microfeed['copyright']) {
-      internalSchema['copyright'] = channel._microfeed['copyright'];
+    if (channel._yaar['copyright']) {
+      internalSchema['copyright'] = channel._yaar['copyright'];
     }
-    if (channel._microfeed['itunes:email']) {
-      internalSchema['itunes:email'] = channel._microfeed['itunes:email'];
+    if (channel._yaar['itunes:email']) {
+      internalSchema['itunes:email'] = channel._yaar['itunes:email'];
     }
     return internalSchema;
   }

@@ -1,18 +1,18 @@
 const https = require('https');
-const {VarsReader, WranglerCmd} = require('./lib/utils');
+const { VarsReader, WranglerCmd } = require('./lib/utils');
 
 const ALLOWED_VARS = [
-  {name: 'CLOUDFLARE_ACCOUNT_ID', encrypted: true, required: true},
-  {name: 'CLOUDFLARE_PROJECT_NAME', encrypted: true, required: true},
-  {name: 'CLOUDFLARE_API_TOKEN', encrypted: true, required: true},
-  {name: 'DEPLOYMENT_ENVIRONMENT', encrypted: false, required: false},
+  { name: 'CLOUDFLARE_ACCOUNT_ID', encrypted: true, required: true },
+  { name: 'CLOUDFLARE_PROJECT_NAME', encrypted: true, required: true },
+  { name: 'CLOUDFLARE_API_TOKEN', encrypted: true, required: true },
+  { name: 'DEPLOYMENT_ENVIRONMENT', encrypted: false, required: false },
 
-  {name: 'R2_ACCESS_KEY_ID', encrypted: true, required: true},
-  {name: 'R2_SECRET_ACCESS_KEY', encrypted: true, required: true},
-  {name: 'R2_PUBLIC_BUCKET', encrypted: true, required: false},
+  { name: 'R2_ACCESS_KEY_ID', encrypted: true, required: true },
+  { name: 'R2_SECRET_ACCESS_KEY', encrypted: true, required: true },
+  { name: 'R2_PUBLIC_BUCKET', encrypted: true, required: false },
 
-  {name: 'NODE_VERSION', encrypted: false, required: false},  // Cloudflare Pages CI needs this to use the right Node version.
-  {name: 'MICROFEED_VERSION', encrypted: false, required: false},
+  { name: 'NODE_VERSION', encrypted: false, required: false },  // Cloudflare Pages CI needs this to use the right Node version.
+  { name: 'yaar_VERSION', encrypted: false, required: false },
 ];
 
 class SyncProjectConfig {

@@ -15,7 +15,7 @@ cat << EOF > .vars.toml
 
           PRODUCTION_BRANCH = "$PRODUCTION_BRANCH"
 
-          MICROFEED_VERSION = "v1"
+          yaar_VERSION = "v1"
           NODE_VERSION = "17.0"
 
           DEPLOYMENT_ENVIRONMENT = "$DEPLOYMENT_ENVIRONMENT"

@@ -1,16 +1,21 @@
-import {getIdFromSlug} from "../../../../common-src/StringUtils";
-import {ITEM_STATUSES_STRINGS_DICT, STATUSES} from "../../../../common-src/Constants";
-import {onFetchItemRequestGet} from "../../../../edge-src/EdgeCommonRequests";
+import { getIdFromSlug } from "../../../../common-src/StringUtils";
+import {
+  ITEM_STATUSES_STRINGS_DICT,
+  STATUSES,
+} from "../../../../common-src/Constants";
+import { onFetchItemRequestGet } from "../../../../edge-src/EdgeCommonRequests";
 
-export async function onRequestGet({params, env, request}) {
-  return await onFetchItemRequestGet(
-    {params, env, request}, false, [
-      STATUSES.PUBLISHED, STATUSES.UNLISTED, STATUSES.UNPUBLISHED]);
+export async function onRequestGet({ params, env, request }) {
+  return await onFetchItemRequestGet({ params, env, request }, false, [
+    STATUSES.PUBLISHED,
+    STATUSES.UNLISTED,
+    STATUSES.UNPUBLISHED,
+  ]);
 }
 
 // TODO: defensive code to handle some common errors
 export async function onRequestDelete({ params, data }) {
-  const {itemId} = params;
+  const { itemId } = params;
   const itemUniqId = getIdFromSlug(itemId);
 
   const { feedCrud } = data;
@@ -22,18 +27,18 @@ export async function onRequestDelete({ params, data }) {
 
   return new Response(JSON.stringify({}), {
     headers: {
-      'content-type': 'application/json;charset=UTF-8',
+      "content-type": "application/json;charset=UTF-8",
     },
   });
 }
 
 // TODO: defensive code to handle some common errors
 export async function onRequestPut({ params, request, data, env }) {
-  const {itemId} = params;
+  const { itemId } = params;
   const itemUniqId = getIdFromSlug(itemId);
 
-  const res = await onRequestGet({params, request, env});
-  let oldItem = {}
+  const res = await onRequestGet({ params, request, env });
+  let oldItem = {};
   if (res.status === 200) {
     const feed = await res.json();
     if (feed.items && feed.items.length > 0) {
@@ -47,14 +52,17 @@ export async function onRequestPut({ params, request, data, env }) {
   const newItemJson = {
     ...oldItem,
     ...itemJson,
-  }
+  };
   if (!itemJson.date_published_ms) {
-    newItemJson.date_published_ms = newItemJson.date_published ?
-      new Date(newItemJson.date_published).getTime() : new Date().getTime();
+    newItemJson.date_published_ms = newItemJson.date_published
+      ? new Date(newItemJson.date_published).getTime()
+      : new Date().getTime();
   }
 
-  newItemJson.status = ITEM_STATUSES_STRINGS_DICT[itemJson.status] ||
-    ITEM_STATUSES_STRINGS_DICT[oldItem._microfeed.status] || STATUSES.PUBLISHED;
+  newItemJson.status =
+    ITEM_STATUSES_STRINGS_DICT[itemJson.status] ||
+    ITEM_STATUSES_STRINGS_DICT[oldItem._yaar.status] ||
+    STATUSES.PUBLISHED;
 
   const { feedCrud } = data;
   await feedCrud.upsertItem({
@@ -64,7 +72,7 @@ export async function onRequestPut({ params, request, data, env }) {
 
   return new Response(JSON.stringify({}), {
     headers: {
-      'content-type': 'application/json;charset=UTF-8',
+      "content-type": "application/json;charset=UTF-8",
     },
   });
 }

@@ -58,7 +58,7 @@ export const CONTROLS_TEXTS_DICT = {
     text: "A channel's categories. All available categories are from <a href='https://podcasters.apple.com/support/1691-apple-podcasts-categories'>Apple Podcasts</a>.<br>" +
       "If this is a podcast, although you can specify more than one category, Apple Podcasts only recognizes the first category and subcategory.",
     rss: '<channel><itunes:category text="Arts" /></channel>',
-    json: '{ "_microfeed": {"categories": [{"name": "Arts"}]} }',
+    json: '{ "_yaar": {"categories": [{"name": "Arts"}]} }',
   },
   [CHANNEL_CONTROLS.LANGUAGE]: {
     linkName: 'Language',
@@ -88,14 +88,14 @@ export const CONTROLS_TEXTS_DICT = {
       "For new subscribers, Apple Podcasts adds the newest, most recent episode in their Library.<br>" +
       "<b>Serial</b>. Specify serial when episodes are intended to be consumed in sequential order. Apple Podcasts will present the oldest episodes first and display the episode numbers (required) of each episode. If organized into seasons, the newest season will be presented first and itunes:episode numbers must be given for each episode.",
     rss: '<channel><itunes:type>episodic</itunes:type></channel>',
-    json: '{ "_microfeed": {"itunes:type": "episodic"} }',
+    json: '{ "_yaar": {"itunes:type": "episodic"} }',
   },
   [CHANNEL_CONTROLS.ITUNES_EMAIL]: {
     linkName: '<itunes:email>',
     modalTitle: 'Channel / <itunes:email>',
     text: "The podcast owner's contact email. It'll be public in the rss feed. Many podcast platforms require this email to validate your podcast ownership.",
     rss: '<channel><itunes:owner><itunes:email>myname@mycompany.com</itunes:email></itunes:owner></channel>',
-    json: '{ "_microfeed": {"itunes:email": "myname@mycompany.com"} }',
+    json: '{ "_yaar": {"itunes:email": "myname@mycompany.com"} }',
   },
   [CHANNEL_CONTROLS.COPYRIGHT]: {
     linkName: 'Copyright',
@@ -104,7 +104,7 @@ export const CONTROLS_TEXTS_DICT = {
       "If your show is copyrighted you should use this tag. For example:<br>" +
       "<em>Copyright 1995-2019 John John Appleseed</em>",
     rss: '<channel><copyright>©2023</copyright></channel>',
-    json: '{ "_microfeed": {"itunes:type": "©2023"} }',
+    json: '{ "_yaar": {"itunes:type": "©2023"} }',
   },
   [CHANNEL_CONTROLS.ITUNES_TITLE]: {
     linkName: '<itunes:title>',
@@ -112,7 +112,7 @@ export const CONTROLS_TEXTS_DICT = {
     text: "The show title specific for Apple Podcasts.<br>" +
       "itunes:title is a string containing a clear concise name of your show on Apple Podcasts.",
     rss: '<channel><itunes:title>a title here</itunes:title></channel>',
-    json: '{ "_microfeed": {"itunes:title": "a title here"} }',
+    json: '{ "_yaar": {"itunes:title": "a title here"} }',
   },
   [CHANNEL_CONTROLS.ITUNES_EXPLICIT]: {
     linkName: '<itunes:explicit>',
@@ -122,7 +122,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Podcasts containing explicit material aren’t available in some Apple Podcasts territories.<br>" +
       "If you specify no, indicating that your podcast doesn’t contain explicit language or adult content, Apple Podcasts displays a Clean parental advisory graphic for your podcast.",
     rss: '<channel><itunes:explicit>true</itunes:explicit></channel>',
-    json: '{ "_microfeed": {"itunes:explicit": true} }',
+    json: '{ "_yaar": {"itunes:explicit": true} }',
   },
   [CHANNEL_CONTROLS.ITUNES_BLOCK]: {
     linkName: '<itunes:block>',
@@ -132,7 +132,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Specifying the itunes:block tag with a 'yes' value, prevents the entire podcast from appearing in Apple Podcasts.<br>" +
       "Specifying any value other than 'yes' has no effect.",
     rss: '<channel><itunes:block>Yes</itunes:block></channel>',
-    json: '{ "_microfeed": {"itunes:block": true} }',
+    json: '{ "_yaar": {"itunes:block": true} }',
   },
   [CHANNEL_CONTROLS.ITUNES_COMPLETE]: {
     linkName: '<itunes:complete>',
@@ -142,7 +142,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Specifying the itunes:complete tag with a 'yes' value indicates that a podcast is complete and you will not post any more episodes in the future.<br>" +
       "Specifying any value other than 'yes' has no effect.",
     rss: '<channel><itunes:complete>Yes</itunes:complete></channel>',
-    json: '{ "_microfeed": {"itunes:complete": true} }',
+    json: '{ "_yaar": {"itunes:complete": true} }',
   },
   [CHANNEL_CONTROLS.ITUNES_NEW_RSS_URL]: {
     linkName: '<itunes:new-rss-url>',
@@ -153,6 +153,6 @@ export const CONTROLS_TEXTS_DICT = {
       "You should maintain your old feed until you have migrated your existing subscribers. Learn how to update your podcast RSS feed URL.<br>" +
       "Note: The itunes:new-feed-url tag reports new feed URLs to Apple Podcasts and isn’t displayed in Apple Podcasts.",
     rss: '<channel><itunes:new-rss-url>https://a-new-rss-url.com/feed</itunes:new-rss-url></channel>',
-    json: '{ "_microfeed": {"itunes:new-rss-url": "https://a-new-rss-url.com/feed"} }',
+    json: '{ "_yaar": {"itunes:new-rss-url": "https://a-new-rss-url.com/feed"} }',
   },
 };

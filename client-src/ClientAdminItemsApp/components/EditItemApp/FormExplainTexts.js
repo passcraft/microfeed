@@ -1,4 +1,4 @@
-import {ITEM_STATUSES_DICT} from "../../../../common-src/Constants";
+import { ITEM_STATUSES_DICT } from "../../../../common-src/Constants";
 
 export const ITEM_CONTROLS = {
   TITLE: 'item_title',
@@ -46,7 +46,7 @@ export const CONTROLS_TEXTS_DICT = {
       "To track download stats of a media file, you can add 3rd-party tracking urls " +
       "(e.g., <a href='https://op3.dev/'>OP3</a>, <a href='http://analytics.podtrac.com/'>Podtrac</a>, <a href='https://chartable.com/'>Chartable</a>...) at <a href='/admin/settings/'>Settings / Tracking urls</a>.",
     rss: '<channel><item><enclosure url="https://cdn-site.com/audio.mp3" type="audio/mpeg" length="277000"/><itunes:duration>00:21:02</itunes:duration></item></channel>',
-    json: '{ "items": [{"attachments": [{"url": "https://cdn-site.com/audio.mp3", "mime_type": "audio/mpeg", "size_in_byte": 277000, "duration_in_seconds": 1262 }], "_microfeed": {"duration_hhmmss": "00:21:02"}}] }',
+    json: '{ "items": [{"attachments": [{"url": "https://cdn-site.com/audio.mp3", "mime_type": "audio/mpeg", "size_in_byte": 277000, "duration_in_seconds": 1262 }], "_yaar": {"duration_hhmmss": "00:21:02"}}] }',
   },
 
   [ITEM_CONTROLS.PUB_DATE]: {
@@ -54,12 +54,12 @@ export const CONTROLS_TEXTS_DICT = {
     modalTitle: 'Item / Published date',
     text: "The date and time when an item was released.",
     rss: '<channel><item><pubDate>Wed, 30 Nov 2022 04:31:48 GMT</pubDate></item></channel>',
-    json: '{ "items": [{"date_published": "2022-11-30T04:31:31.867Z", "_microfeed": {"date_published_ms": 1669782691867, "date_published_short": "Tue Nov 29 2022"}}] }',
+    json: '{ "items": [{"date_published": "2022-11-30T04:31:31.867Z", "_yaar": {"date_published_ms": 1669782691867, "date_published_short": "Tue Nov 29 2022"}}] }',
   },
   [ITEM_CONTROLS.LINK]: {
     linkName: 'Link',
     modalTitle: 'Item / Link',
-    text: "An item's web link. By default, it's a web page on your microfeed. But you can set it to fit your use case.",
+    text: "An item's web link. By default, it's a web page on your yaar. But you can set it to fit your use case.",
     rss: '<channel><item><link>https://example.com/page1.html</link></item></channel>',
     json: '{ "items": [{"url": "https://example.com/page1.html"}] }',
   },
@@ -80,7 +80,7 @@ export const CONTROLS_TEXTS_DICT = {
       "It is very important that each episode have a unique GUID and that it never changes once it's set, even if an episode’s metadata, like title or enclosure URL, do change.<br>" +
       "Failing to comply with these guidelines may result in duplicate episodes being shown to listeners, inaccurate data in Analytics, and can cause issues with your podcasts’s listing and chart placement in Apple Podcasts and other podcast apps/websites.",
     rss: '<channel><item><guid>z9H7LSkykS1</guid></item></channel>',
-    json: '{ "items": [{"_microfeed": {"guid": "z9H7LSkykS1"}}] }',
+    json: '{ "items": [{"_yaar": {"guid": "z9H7LSkykS1"}}] }',
   },
   [ITEM_CONTROLS.ITUNES_EXPLICIT]: {
     linkName: '<itunes:explicit>',
@@ -89,7 +89,7 @@ export const CONTROLS_TEXTS_DICT = {
       "If you specify yes, indicating the presence of explicit content, Apple Podcasts displays an Explicit parental advisory graphic for your episode. Episodes containing explicit material aren’t available in some Apple Podcasts territories.<br>" +
       "If you specify no, indicating that the episode does not contain explicit language or adult content, Apple Podcasts displays a Clean parental advisory graphic for your episode.",
     rss: '<channel><item><itunes:explicit>false</itunes:explicit></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:explicit": true}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:explicit": true}}] }',
   },
   [ITEM_CONTROLS.ITUNES_TITLE]: {
     linkName: '<itunes:title>',
@@ -99,7 +99,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Don’t specify the episode number or season number in this tag. Instead, specify those details in the appropriate tags ( itunes:episode, itunes:season). Also, don’t repeat the title of your show within your episode title.<br>" +
       "Separating episode and season number from the title makes it possible for Apple to easily index and order content from all shows.",
     rss: '<channel><item><itunes:title>Title Here</itunes:title></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:title": "Title Here"}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:title": "Title Here"}}] }',
   },
   [ITEM_CONTROLS.ITUNES_EPISODE_TYPE]: {
     linkName: '<itunes:episodeType>',
@@ -111,7 +111,7 @@ export const CONTROLS_TEXTS_DICT = {
       "<b>trailer</b>. Specify trailer when you are submitting a short, promotional piece of content that represents a preview of your current show.<br>" +
       "<b>bonus</b>. Specify bonus when you are submitting extra content for your show (for example, behind the scenes information or interviews with the cast) or cross-promotional content for another show.",
     rss: '<channel><item><itunes:episodeType>full</itunes:episodeType></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:episodeType": "full"}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:episodeType": "full"}}] }',
   },
   [ITEM_CONTROLS.ITUNES_SEASON]: {
     linkName: '<itunes:season>',
@@ -121,7 +121,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Where season is a non-zero integer (1, 2, 3, etc.) representing your season number.<br>" +
       "To allow the season feature for shows containing a single season, if only one season exists in the RSS feed, Apple Podcasts doesn’t display a season number. When you add a second season to the RSS feed, Apple Podcasts displays the season numbers.",
     rss: '<channel><item><itunes:season>2</itunes:season></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:season": 2}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:season": 2}}] }',
   },
   [ITEM_CONTROLS.ITUNES_EPISODE]: {
     linkName: '<itunes:episode>',
@@ -132,7 +132,7 @@ export const CONTROLS_TEXTS_DICT = {
       "Where episode is a non-zero integer (1, 2, 3, etc.) representing your episode number.<br>" +
       "If you are using your RSS feed to distribute a free version of an episode that is already available to Apple Podcasts paid subscribers, make sure the episode numbers are the same so you don’t have duplicate episodes appear on your show page. Learn more about how to set up your show for a subscription.",
     rss: '<channel><item><itunes:episode>3</itunes:episode></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:episode": 3}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:episode": 3}}] }',
   },
   [ITEM_CONTROLS.ITUNES_BLOCK]: {
     linkName: '<itunes:block>',
@@ -143,7 +143,7 @@ export const CONTROLS_TEXTS_DICT = {
       "For example, you might want to block a specific episode if you know that its content would otherwise cause the entire podcast to be removed from Apple Podcasts.<br>" +
       "Specifying any value other than 'yes' has no effect.",
     rss: '<channel><item><itunes:block>Yes</itunes:block></item></channel>',
-    json: '{ "items": [{"_microfeed": {"itunes:block": true}}] }',
+    json: '{ "items": [{"_yaar": {"itunes:block": true}}] }',
   },
   [ITEM_CONTROLS.STATUS]: {
     linkName: 'Item status',

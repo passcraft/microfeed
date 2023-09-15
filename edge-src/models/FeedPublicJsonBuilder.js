@@ -5,11 +5,11 @@ import {
   secondsToHHMMSS,
   htmlToPlainText
 } from "../../common-src/StringUtils";
-import {humanizeMs, msToRFC3339} from "../../common-src/TimeUtils";
-import {ENCLOSURE_CATEGORIES, ITEM_STATUSES_DICT, STATUSES} from "../../common-src/Constants";
-import {isValidMediaFile} from "../../common-src/MediaFileUtils";
+import { humanizeMs, msToRFC3339 } from "../../common-src/TimeUtils";
+import { ENCLOSURE_CATEGORIES, ITEM_STATUSES_DICT, STATUSES } from "../../common-src/Constants";
+import { isValidMediaFile } from "../../common-src/MediaFileUtils";
 
-const {MICROFEED_VERSION} = require('../../common-src/Version');
+const { yaar_VERSION } = require('../../common-src/Version');
 
 export default class FeedPublicJsonBuilder {
   constructor(content, baseUrl, request, forOneItem = false) {
@@ -72,8 +72,8 @@ export default class FeedPublicJsonBuilder {
     }
 
     if (this.webGlobalSettings.favicon && this.webGlobalSettings.favicon.url) {
-        publicContent['favicon'] = urlJoinWithRelative(
-          this.publicBucketUrl, this.webGlobalSettings.favicon.url, this.baseUrl);
+      publicContent['favicon'] = urlJoinWithRelative(
+        this.publicBucketUrl, this.webGlobalSettings.favicon.url, this.baseUrl);
     }
 
     if (channel.publisher) {
@@ -92,11 +92,11 @@ export default class FeedPublicJsonBuilder {
     return publicContent;
   }
 
-  _buildPublicContentMicrofeedExtra(publicContent) {
+  _buildPublicContentyaarExtra(publicContent) {
     const channel = this.content.channel || {};
-    const subscribeMethods = this.settings.subscribeMethods || {'methods': []};
-    const microfeedExtra = {
-      microfeed_version: MICROFEED_VERSION,
+    const subscribeMethods = this.settings.subscribeMethods || { 'methods': [] };
+    const yaarExtra = {
+      yaar_version: yaar_VERSION,
       base_url: this.baseUrl,
       categories: [],
     };
@@ -117,13 +117,13 @@ export default class FeedPublicJsonBuilder {
         }
       }
       if (cat) {
-        microfeedExtra['categories'].push(cat);
+        yaarExtra['categories'].push(cat);
       }
     });
     if (!subscribeMethods.methods) {
-      microfeedExtra['subscribe_methods'] = '';
+      yaarExtra['subscribe_methods'] = '';
     } else {
-      microfeedExtra['subscribe_methods'] = subscribeMethods.methods.filter((m) => m.enabled).map((m) => {
+      yaarExtra['subscribe_methods'] = subscribeMethods.methods.filter((m) => m.enabled).map((m) => {
         // TODO: supports custom icons that are hosted on R2
         m.image = urlJoinWithRelative(this.publicBucketUrl, m.image, this.baseUrl);
         if (!m.editable) {
@@ -141,46 +141,46 @@ export default class FeedPublicJsonBuilder {
         return m;
       });
     }
-    microfeedExtra['description_text'] = htmlToPlainText(channel.description);
+    yaarExtra['description_text'] = htmlToPlainText(channel.description);
 
     if (channel['itunes:explicit']) {
-      microfeedExtra['itunes:explicit'] = true;
+      yaarExtra['itunes:explicit'] = true;
     }
     if (channel['itunes:title']) {
-      microfeedExtra['itunes:title'] = channel['itunes:title'];
+      yaarExtra['itunes:title'] = channel['itunes:title'];
     }
     if (channel['copyright']) {
-      microfeedExtra['copyright'] = channel['copyright'];
+      yaarExtra['copyright'] = channel['copyright'];
     }
     if (channel['itunes:title']) {
-      microfeedExtra['itunes:title'] = channel['itunes:title'];
+      yaarExtra['itunes:title'] = channel['itunes:title'];
     }
     if (channel['itunes:type']) {
-      microfeedExtra['itunes:type'] = channel['itunes:type'];
+      yaarExtra['itunes:type'] = channel['itunes:type'];
     }
     if (channel['itunes:block']) {
-      microfeedExtra['itunes:block'] = channel['itunes:block'];
+      yaarExtra['itunes:block'] = channel['itunes:block'];
     }
     if (channel['itunes:complete']) {
-      microfeedExtra['itunes:complete'] = channel['itunes:complete'];
+      yaarExtra['itunes:complete'] = channel['itunes:complete'];
     }
     if (channel['itunes:new-feed-url']) {
-      microfeedExtra['itunes:new-feed-url'] = channel['itunes:new-feed-url'];
+      yaarExtra['itunes:new-feed-url'] = channel['itunes:new-feed-url'];
     }
     if (channel['itunes:email']) {
-      microfeedExtra['itunes:email'] = channel['itunes:email'];
+      yaarExtra['itunes:email'] = channel['itunes:email'];
     }
-    microfeedExtra['items_sort_order'] = this.content.items_sort_order;
+    yaarExtra['items_sort_order'] = this.content.items_sort_order;
     if (this.content.items_next_cursor && !this.forOneItem) {
-      microfeedExtra['items_next_cursor'] = this.content.items_next_cursor;
-      microfeedExtra['next_url'] = publicContent['next_url'];
+      yaarExtra['items_next_cursor'] = this.content.items_next_cursor;
+      yaarExtra['next_url'] = publicContent['next_url'];
     }
     if (this.content.items_prev_cursor && !this.forOneItem) {
-      microfeedExtra['items_prev_cursor'] = this.content.items_prev_cursor;
-      microfeedExtra['prev_url'] = `${publicContent['feed_url']}?prev_cursor=${this.content.items_prev_cursor}&` +
+      yaarExtra['items_prev_cursor'] = this.content.items_prev_cursor;
+      yaarExtra['prev_url'] = `${publicContent['feed_url']}?prev_cursor=${this.content.items_prev_cursor}&` +
         `sort=${this.content.items_sort_order}`;
     }
-    return microfeedExtra;
+    return yaarExtra;
   }
 
   _buildPublicContentItem(item, mediaFile) {
@@ -194,7 +194,7 @@ export default class FeedPublicJsonBuilder {
       title: item.title || 'untitled',
     };
     const attachment = {};
-    const _microfeed = {
+    const _yaar = {
       is_audio: mediaFile.isAudio,
       is_document: mediaFile.isDocument,
       is_external_url: mediaFile.isExternalUrl,
@@ -219,7 +219,7 @@ export default class FeedPublicJsonBuilder {
       }
       if (mediaFile.durationSecond) {
         attachment['duration_in_seconds'] = mediaFile.durationSecond;
-        _microfeed['duration_hhmmss'] = secondsToHHMMSS(mediaFile.durationSecond);
+        _yaar['duration_hhmmss'] = secondsToHHMMSS(mediaFile.durationSecond);
       }
       if (Object.keys(attachment).length > 0) {
         newItem['attachments'] = [attachment];
@@ -252,31 +252,31 @@ export default class FeedPublicJsonBuilder {
     }
 
     if (item['itunes:title']) {
-      _microfeed['itunes:title'] = item['itunes:title'];
+      _yaar['itunes:title'] = item['itunes:title'];
     }
     if (item['itunes:block']) {
-      _microfeed['itunes:block'] = item['itunes:block'];
+      _yaar['itunes:block'] = item['itunes:block'];
     }
     if (item['itunes:episodeType']) {
-      _microfeed['itunes:episodeType'] = item['itunes:episodeType'];
+      _yaar['itunes:episodeType'] = item['itunes:episodeType'];
     }
     if (item['itunes:season']) {
-      _microfeed['itunes:season'] = parseInt(item['itunes:season'], 10);
+      _yaar['itunes:season'] = parseInt(item['itunes:season'], 10);
     }
     if (item['itunes:episode']) {
-      _microfeed['itunes:episode'] = parseInt(item['itunes:episode'], 10);
+      _yaar['itunes:episode'] = parseInt(item['itunes:episode'], 10);
     }
     if (item['itunes:explicit']) {
-      _microfeed['itunes:explicit'] = item['itunes:explicit'];
+      _yaar['itunes:explicit'] = item['itunes:explicit'];
     }
     if (item.pubDate) {
-      _microfeed['date_published_short'] = item.pubDate;
+      _yaar['date_published_short'] = item.pubDate;
     }
     if (item.pubDateMs) {
-      _microfeed['date_published_ms'] = item.pubDateMs;
+      _yaar['date_published_ms'] = item.pubDateMs;
     }
 
-    newItem['_microfeed'] = _microfeed;
+    newItem['_yaar'] = _yaar;
     return newItem;
   }
 
@@ -286,7 +286,7 @@ export default class FeedPublicJsonBuilder {
       ...this._buildPublicContentChannel(this.content),
     };
 
-    const {items} = this.content;
+    const { items } = this.content;
     const existingitems = items || [];
     publicContent['items'] = [];
     existingitems.forEach((item) => {
@@ -302,12 +302,12 @@ export default class FeedPublicJsonBuilder {
     // Note: We don't proactively sort items based on itunes:type.
     //       Instead, we rely on ?sort= query param and settings
     // if (channel['itunes:type'] === 'episodic') {
-    //   publicContent.items.sort((a, b) => b['_microfeed']['date_published_ms'] - a['_microfeed']['date_published_ms']);
+    //   publicContent.items.sort((a, b) => b['_yaar']['date_published_ms'] - a['_yaar']['date_published_ms']);
     // } else {
-    //   publicContent.items.sort((a, b) => a['_microfeed']['date_published_ms'] - b['_microfeed']['date_published_ms']);
+    //   publicContent.items.sort((a, b) => a['_yaar']['date_published_ms'] - b['_yaar']['date_published_ms']);
     // }
 
-    publicContent['_microfeed'] = this._buildPublicContentMicrofeedExtra(publicContent);
+    publicContent['_yaar'] = this._buildPublicContentyaarExtra(publicContent);
     return publicContent;
   }
 }

@@ -1,8 +1,8 @@
 import FeedDb from "../../edge-src/models/FeedDb";
 import FeedCrudManager from "../../edge-src/models/FeedCrudManager";
-import {SETTINGS_CATEGORIES} from "../../common-src/Constants";
+import { SETTINGS_CATEGORIES } from "../../common-src/Constants";
 
-async function fetchFeedAndAuth({request, next, env, data}) {
+async function fetchFeedAndAuth({ request, next, env, data }) {
   const feedDb = new FeedDb(env, request);
   const contentFromDb = await feedDb.getContent()
 
@@ -19,17 +19,17 @@ async function fetchFeedAndAuth({request, next, env, data}) {
     const apiSettings = contentFromDb.settings[SETTINGS_CATEGORIES.API_SETTINGS];
     if (apiSettings) {
       if (apiSettings.enabled) {
-        const apiKey = request.headers.get('x-microfeedapi-key');
+        const apiKey = request.headers.get('x-yaarapi-key');
         try {
           const tokenMatched = apiSettings.apps.some(app => app.token === apiKey);
           if (apiKey && tokenMatched) {
             return next();
           }
-        } catch(e) {} // eslint-disable-line no-empty
+        } catch (e) { } // eslint-disable-line no-empty
       }
     }
   }
-  return new Response('Unauthorized', {status: 401});
+  return new Response('Unauthorized', { status: 401 });
 }
 
 export const onRequest = [fetchFeedAndAuth];

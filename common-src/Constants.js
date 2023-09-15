@@ -127,11 +127,11 @@ export const PREDEFINED_SUBSCRIBE_METHODS = {
 };
 
 export const OUR_BRAND = {
-  domain: 'microfeed.org',
-  brandName: 'microfeed',
-  whatsnewEndpoint: 'https://www.microfeed.org/json/',
-  whatsnewWebsite: 'https://www.microfeed.org',
-  exampleCdnUrl: 'https://media-cdn.microfeed.org',
+  domain: 'yaar.org',
+  brandName: 'yaar',
+  whatsnewEndpoint: 'https://www.yaar.org/json/',
+  whatsnewWebsite: 'https://www.yaar.org',
+  exampleCdnUrl: 'https://media-cdn.yaar.org',
 };
 
 export const ENCLOSURE_CATEGORIES = {

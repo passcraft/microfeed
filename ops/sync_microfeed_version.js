@@ -1,8 +1,8 @@
-const {exec} = require('child_process');
+const { exec } = require('child_process');
 
-const {MICROFEED_VERSION} = require('../common-src/Version');
+const { yaar_VERSION } = require('../common-src/Version');
 
-exec(`yarn version ${MICROFEED_VERSION}`, (error, stdout, stderr) => {
+exec(`yarn version ${yaar_VERSION}`, (error, stdout, stderr) => {
   if (error) {
     console.log(error);
     console.log('exit.');
@@ -13,6 +13,6 @@ exec(`yarn version ${MICROFEED_VERSION}`, (error, stdout, stderr) => {
     if (stderr) {
       console.log(`stderr - \n${stderr}`);
     }
-    console.log(`Updated package.json version to ${MICROFEED_VERSION}.`);
+    console.log(`Updated package.json version to ${yaar_VERSION}.`);
   }
 });

@@ -1,7 +1,7 @@
 </br>
 </br>
 <div align="center">
-  <a href="https://www.microfeed.org/" target="_blank">
+  <a href="https://www.yaar.org/" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/1719237/210119945-50e1d444-2d12-43d2-a96d-65bdbccecb70.png">
     <img src="https://user-images.githubusercontent.com/1719237/207514210-99ddbd03-f8f0-410a-96c8-80da1afb804d.png" width="280" alt="Logo"/>
@@ -9,44 +9,44 @@
   </a>
 </div>
 
-<h1 align="center">microfeed: a lightweight cms self-hosted on cloudflare</h1>
+<h1 align="center">yaar: a lightweight cms self-hosted on cloudflare</h1>
 
   <p align="center">
-    <a href="https://github.com/microfeed/microfeed/issues/new?assignees=&labels=bug"><b>Report Bug</b></a>
+    <a href="https://github.com/yaar/yaar/issues/new?assignees=&labels=bug"><b>Report Bug</b></a>
     ·
-    <a href="https://github.com/microfeed/microfeed/discussions/new?category=ideas"><b>Request Feature</b></a>
+    <a href="https://github.com/yaar/yaar/discussions/new?category=ideas"><b>Request Feature</b></a>
     ·
-    <a href="mailto:support@microfeed.org"><b>Email Us Privately</b></a>
+    <a href="mailto:support@yaar.org"><b>Email Us Privately</b></a>
   </p>
 
-Welcome to microfeed, a lightweight content management system (CMS) self-hosted on Cloudflare.
-With microfeed, you can easily publish a variety of content such as audios, videos, photos, documents, blog posts,
+Welcome to yaar, a lightweight content management system (CMS) self-hosted on Cloudflare.
+With yaar, you can easily publish a variety of content such as audios, videos, photos, documents, blog posts,
 and external URLs to a feed in the form of web, RSS, and JSON. It's the perfect solution for tech-savvy individuals who
 want to self-host their own CMS without having to run their own servers.
 
-microfeed is built by [Listen Notes](https://www.listennotes.com/) and is hosted on Cloudflare's [Pages](https://pages.cloudflare.com/),
+yaar is built by [Listen Notes](https://www.listennotes.com/) and is hosted on Cloudflare's [Pages](https://pages.cloudflare.com/),
 [R2](https://www.cloudflare.com/products/r2/), [D1](https://developers.cloudflare.com/d1/), and [Zero Trust](https://www.cloudflare.com/products/zero-trust/).
 
-If you have any questions or feedback, please don't hesitate to reach out to us at support@microfeed.org. We'd love to hear from you!
+If you have any questions or feedback, please don't hesitate to reach out to us at support@yaar.org. We'd love to hear from you!
 
 ## 📚 Table of contents
-[![Deploy to Cloudflare Pages](https://github.com/microfeed/microfeed/actions/workflows/deploy.yml/badge.svg?event=workflow_dispatch)](https://github.com/microfeed/microfeed/actions/workflows/deploy.yml)
-[![CI](https://github.com/microfeed/microfeed/actions/workflows/ci.yml/badge.svg)](https://github.com/microfeed/microfeed/actions/workflows/ci.yml)
-[![Email us](https://img.shields.io/badge/Email-support%40microfeed.org-blue)](mailto:support@microfeed.org)
-[![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://www.microfeed.org/i/introducing-microfeed-self-hosted-cms-on-cloudflare-opensource-serverless-free-uhbQEmArlC2/)
+[![Deploy to Cloudflare Pages](https://github.com/yaar/yaar/actions/workflows/deploy.yml/badge.svg?event=workflow_dispatch)](https://github.com/yaar/yaar/actions/workflows/deploy.yml)
+[![CI](https://github.com/yaar/yaar/actions/workflows/ci.yml/badge.svg)](https://github.com/yaar/yaar/actions/workflows/ci.yml)
+[![Email us](https://img.shields.io/badge/Email-support%40yaar.org-blue)](mailto:support@yaar.org)
+[![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://www.yaar.org/i/introducing-yaar-self-hosted-cms-on-cloudflare-opensource-serverless-free-uhbQEmArlC2/)
 
 * [⭐️ How it works](#%EF%B8%8F-how-it-works)
 * [🚀 Installation](#-installation)
   * [Prerequisites](#prerequisites)
-  * [Step 1. Fork the microfeed repo to your GitHub](#step-1-fork-the-microfeed-repo-to-your-github)
+  * [Step 1. Fork the yaar repo to your GitHub](#step-1-fork-the-yaar-repo-to-your-github)
   * [Step 2. Put some secrets on your forked repo](#step-2-put-some-secrets-on-your-forked-repo)
   * [Step 3. Run GitHub Action to deploy code](#step-3-run-github-action-to-deploy-code)
   * [Step 4. Make a few clicks on Cloudflare dashboard](#step-4-make-a-few-clicks-on-cloudflare-dashboard)
   * [Step 5. Done. Start publishing](#step-5-done-start-publishing)
-  * [Bonus. Update to the latest version of microfeed](#bonus-update-to-the-latest-version-of-microfeed)
+  * [Bonus. Update to the latest version of yaar](#bonus-update-to-the-latest-version-of-yaar)
 * [💻 FAQs](#-faqs)
 * [💪 Contributions](#-contributions)
-  * [Run microfeed on local](#run-microfeed-on-local)
+  * [Run yaar on local](#run-yaar-on-local)
 * [🛡️ License](#%EF%B8%8F-license)
 
 ## ⭐️ How it works
@@ -54,34 +54,34 @@ If you have any questions or feedback, please don't hesitate to reach out to us 
 Since the 1990s, a significant portion of the web has been powered by feeds.
 People (and bots) publish items to a feed, and others can subscribe to that feed to receive new content.
 
-microfeed makes it easy for individuals to self-host their own feed on Cloudflare, including but not limited to
+yaar makes it easy for individuals to self-host their own feed on Cloudflare, including but not limited to
 * a podcast feed of audios
 * a blog feed of posts
 * an Instagram-like feed of images (e.g., [llamacorn.listennotes.com](https://llamacorn.listennotes.com/), [brand-assets.listennotes.com](https://brand-assets.listennotes.com/))
 * a YouTube-like feed of videos
 * a personal website with custom links (e.g., [wenbin.org](https://www.wenbin.org/))
 * a content curation feed of external news article urls
-* a marketing site with updates and press coverage (e.g., [microfeed.org](https://www.microfeed.org/))
-* a headless cms with a GUI dashboard and a public json feed (e.g., [microfeed.org/json](https://www.microfeed.org/json/) with OpenAPI spec in [YAML](https://www.microfeed.org/json/openapi.yaml) and [HTML](https://www.microfeed.org/json/openapi.html))
+* a marketing site with updates and press coverage (e.g., [yaar.org](https://www.yaar.org/))
+* a headless cms with a GUI dashboard and a public json feed (e.g., [yaar.org/json](https://www.yaar.org/json/) with OpenAPI spec in [YAML](https://www.yaar.org/json/openapi.yaml) and [HTML](https://www.yaar.org/json/openapi.html))
 * a list of domain names for sale (e.g., [listen411.com](https://www.listen411.com/), [ListenHost.com](https://www.listenhost.com/)...)
 * a website for an entire book (e.g., [The Art of War](https://the-art-of-war.dripbook.xyz/))
 * ...
 
-microfeed uses Cloudflare [Pages](https://pages.cloudflare.com/) to host and run the code,
+yaar uses Cloudflare [Pages](https://pages.cloudflare.com/) to host and run the code,
 [R2](https://www.cloudflare.com/products/r2/) to host and serve media files,
 [D1](https://developers.cloudflare.com/d1/) to store metadata,
 and [Zero Trust](https://www.cloudflare.com/products/zero-trust/) to provide logins to the admin dashboard.
 Cloudflare provides very generous free usage quotas, making it an affordable solution for personal or small business use.
-While you will still need to pay for a domain name, hosting microfeed on Cloudflare is essentially free.
+While you will still need to pay for a domain name, hosting yaar on Cloudflare is essentially free.
 
-With microfeed, you can publish a variety of content such as audios, videos, photos, documents, blog posts,
+With yaar, you can publish a variety of content such as audios, videos, photos, documents, blog posts,
 and external URLs to a customizable website, an RSS feed, and a [JSON feed](https://www.jsonfeed.org/).
-Check out some examples of microfeed in action:
+Check out some examples of yaar in action:
 * Web feed: [https://llamacorn.listennotes.com/](https://llamacorn.listennotes.com/)
 * Rss feed: [https://llamacorn.listennotes.com/rss/](https://llamacorn.listennotes.com/rss/)
 * Json feed: [https://llamacorn.listennotes.com/json/](https://llamacorn.listennotes.com/json/)
 
-microfeed provides a simple yet powerful admin dashboard that makes it easy to add items to the feed,
+yaar provides a simple yet powerful admin dashboard that makes it easy to add items to the feed,
 upload media files, and customize web page styles. If you've used WordPress before, you'll find it familiar.
 
 ![image-6d056193c81c0b8f5de0503f5af18116](https://user-images.githubusercontent.com/1719237/209486588-00acefe0-dd51-4bfc-aed7-1f63850aa720.png)
@@ -90,17 +90,17 @@ upload media files, and customize web page styles. If you've used WordPress befo
 
 ## 🚀 Installation
 
-Roughly you'll follow these steps to install a microfeed instance to Cloudflare:
+Roughly you'll follow these steps to install a yaar instance to Cloudflare:
 
-1. Fork the [microfeed repo](https://github.com/microfeed/microfeed) to your personal (or organizational) GitHub account.
+1. Fork the [yaar repo](https://github.com/yaar/yaar) to your personal (or organizational) GitHub account.
 2. Obtain Cloudflare API tokens and save them as secrets on your forked GitHub repository.
 3. Use the predefined GitHub Action in your forked repository to deploy the code to Cloudflare Pages, using the secrets from step 2.
 4. Make a few clicks on Cloudflare's dashboard to set up custom domains and configure some security settings.
 5. Done. Start publishing!
 
 > We understand that not everyone is comfortable with reading documentation, so we've made it as easy as possible
-> to get started with microfeed. However, we'd love to see Cloudflare implement a "Login with Cloudflare" OAuth feature,
-> which would allow for almost one-click deployment of microfeed. In the meantime, we've tried to make the setup process
+> to get started with yaar. However, we'd love to see Cloudflare implement a "Login with Cloudflare" OAuth feature,
+> which would allow for almost one-click deployment of yaar. In the meantime, we've tried to make the setup process
 > as straightforward as possible for tech-savvy users.
 
 ### Prerequisites
@@ -110,9 +110,9 @@ Roughly you'll follow these steps to install a microfeed instance to Cloudflare:
 
 [Back to TOC](#-table-of-contents)
 
-### Step 1. Fork the microfeed repo to your GitHub
+### Step 1. Fork the yaar repo to your GitHub
 
-Simply click on [https://github.com/microfeed/microfeed/fork](https://github.com/microfeed/microfeed/fork) to fork the repository.
+Simply click on [https://github.com/yaar/yaar/fork](https://github.com/yaar/yaar/fork) to fork the repository.
 
 You may choose to modify the code in your forked repository in the future, but it's likely that you won't need to
 touch the code at all. Simply fork the repository and keep it synced for future use.
@@ -122,7 +122,7 @@ touch the code at all. Simply fork the repository and keep it synced for future 
 ### Step 2. Put some secrets on your forked repo
 
 Go to your forked repo's [Settings -> Secrets -> Actions](../../settings/secrets/actions), and create 5 secrets (click for more details).
-With these secrets in place, you'll be able to use GitHub Actions to deploy your microfeed instance to Cloudflare Pages.
+With these secrets in place, you'll be able to use GitHub Actions to deploy your yaar instance to Cloudflare Pages.
 
 <details>
   <summary><b>CLOUDFLARE_ACCOUNT_ID</b></summary>
@@ -176,7 +176,7 @@ Create an R2 API token here:
 
 Select "Admin Read & Write" permission and create an API token:
 
-  <img width="858" alt="Screenshot 2023-08-08 at 4 33 55 PM" src="https://github.com/microfeed/microfeed/assets/1719237/1a90df29-5660-49d4-b66a-24873812492d">
+  <img width="858" alt="Screenshot 2023-08-08 at 4 33 55 PM" src="https://github.com/yaar/yaar/assets/1719237/1a90df29-5660-49d4-b66a-24873812492d">
 
 
 Copy Access Key ID for R2_ACCESS_KEY_ID, and Secret Access Key for R2_SECRET_ACCESS_KEY
@@ -215,13 +215,13 @@ If you see the green checkmark, then the deployment is successful. And you can s
 
 <img width="880" alt="Screenshot 2022-12-04 at 4 55 10 PM" src="https://user-images.githubusercontent.com/1719237/205527141-277620dd-586b-42dd-be97-edb7875d0705.png">
 
-You can access the site via ${CLOUDFLARE_PROJECT_NAME}.pages.dev, for example, [https://microfeed-org.pages.dev/](https://microfeed-org.pages.dev/)
+You can access the site via ${CLOUDFLARE_PROJECT_NAME}.pages.dev, for example, [https://yaar-org.pages.dev/](https://yaar-org.pages.dev/)
 
 [Back to 📚TOC](#-table-of-contents)
 
 ### Step 4. Make a few clicks on Cloudflare dashboard
 
-To manage your microfeed instance, you'll use the admin dashboard at ${CLOUDFLARE_PROJECT_NAME}.pages.dev/admin, for example, [https://microfeed-org.pages.dev/admin/](https://microfeed-org.pages.dev/admin/) (the admin dashboard needs to be protected by Cloudflare Zero Trust).
+To manage your yaar instance, you'll use the admin dashboard at ${CLOUDFLARE_PROJECT_NAME}.pages.dev/admin, for example, [https://yaar-org.pages.dev/admin/](https://yaar-org.pages.dev/admin/) (the admin dashboard needs to be protected by Cloudflare Zero Trust).
 
 Upon accessing the admin dashboard for the first time, you'll complete the setup process by following the checklist:
 
@@ -231,22 +231,22 @@ Upon accessing the admin dashboard for the first time, you'll complete the setup
 
 ### Step 5. Done. Start publishing
 
-Once you've completed the setup process, your microfeed instance will be ready to use.
+Once you've completed the setup process, your yaar instance will be ready to use.
 You can add, update, or delete items from the admin dashboard.
 
 You can also customize the appearance of the website at Settings / Custom code by editing the raw HTML and CSS:
 
 <img width="1098" alt="Screenshot 2022-12-30 at 7 57 45 PM" src="https://user-images.githubusercontent.com/1719237/210062910-e56135f6-557e-419e-a00d-b25dd391c93d.png">
 
-The HTML code is using [mustache.js](https://github.com/janl/mustache.js) as a templating language, where you can access to variables from Feed Json or Item Json. For example, on our marketing website [microfeed.org](https://www.microfeed.org/)'s home page (Feed Web), we use variables in the html code from [microfeed.org/json/](https://www.microfeed.org/json/), and on [an item's page](https://www.microfeed.org/i/introducing-microfeed-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/) (Item Web), we use variables from [${item_url}/json](https://www.microfeed.org/i/introducing-microfeed-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/json).
+The HTML code is using [mustache.js](https://github.com/janl/mustache.js) as a templating language, where you can access to variables from Feed Json or Item Json. For example, on our marketing website [yaar.org](https://www.yaar.org/)'s home page (Feed Web), we use variables in the html code from [yaar.org/json/](https://www.yaar.org/json/), and on [an item's page](https://www.yaar.org/i/introducing-yaar-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/) (Item Web), we use variables from [${item_url}/json](https://www.yaar.org/i/introducing-yaar-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/json).
 
-With the easy access to the json data of a microfeed instance (i.e., [Feed Json](https://www.microfeed.org/json/) and [Item Json](https://www.microfeed.org/i/introducing-microfeed-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/json), you can use it as a headless CMS and build your own client apps to display the content.
+With the easy access to the json data of a yaar instance (i.e., [Feed Json](https://www.yaar.org/json/) and [Item Json](https://www.yaar.org/i/introducing-yaar-a-self-hosted-open-source-cms-on-cloudflare-open-alpha-uhbQEmArlC2/json), you can use it as a headless CMS and build your own client apps to display the content.
 
 [Back to 📚TOC](#-table-of-contents)
 
-### Bonus. Update to the latest version of microfeed
+### Bonus. Update to the latest version of yaar
 
-We'll continue to add new features and fix bugs in this microfeed repo.
+We'll continue to add new features and fix bugs in this yaar repo.
 You may want to update your forked repo with the new code.
 
 You'll first sync up the code in your forked repo:
@@ -262,7 +262,7 @@ Then go to [Actions -> Deploy to Cloudflare Pages](../../actions/workflows/deplo
 <details>
 <summary><b>How can I track podcast / video / image downloads?</b></summary>
 
-To track podcast, video, or image downloads with microfeed, you can use the tracking URLs feature.
+To track podcast, video, or image downloads with yaar, you can use the tracking URLs feature.
 This allows you to set up third-party tracking URLs for your media files, such as those provided by [OP3](https://op3.dev/), [Podtrac](http://analytics.podtrac.com/), [Chartable](https://chartable.com/)...
 
 To set up tracking URLs, you will need to go to Settings / Tracking URLs:
@@ -270,7 +270,7 @@ To set up tracking URLs, you will need to go to Settings / Tracking URLs:
 
 
 From there, you can add the third-party tracking URLs that you want to use.
-microfeed will automatically add these URLs to the front of the URL for your media files, allowing you to track download statistics.
+yaar will automatically add these URLs to the front of the URL for your media files, allowing you to track download statistics.
 
 This is a [common practice in the podcast industry](https://lowerstreet.co/blog/podcast-tracking) and can be a useful way to monitor the performance of your content and understand how it is being consumed by your audience.
 
@@ -284,13 +284,13 @@ We ([Listen Notes](https://www.listennotes.com/)) have been using Cloudflare for
 
 It's convenient to manage all things on a one-stop platform like Cloudflare (e.g., DNS, Cache, firewall, running code, CDN, trustless logins...).
 
-microfeed is still in open alpha phase. Cloudflare is the first platform we support.
+yaar is still in open alpha phase. Cloudflare is the first platform we support.
 We may consider supporting other serverless platforms, so you can easily migrate away if needed.
 </details>
 
 
 <details>
-<summary><b>What if Cloudflare de-platforms my microfeed instance?</b></summary>
+<summary><b>What if Cloudflare de-platforms my yaar instance?</b></summary>
 
 It is important to carefully review the terms of service for any service that you use, including Cloudflare.
 It is possible that if you violate the terms of service, the service may take action, such as de-platforming your instance.
@@ -302,23 +302,23 @@ It is also a good idea to use your own custom domain, as this will give you more
 
 
 <details>
-<summary><b>Why should I use microfeed?</b></summary>
+<summary><b>Why should I use yaar?</b></summary>
 
-If you are already using Cloudflare and are satisfied with its services, then using microfeed may be a good option for you.
+If you are already using Cloudflare and are satisfied with its services, then using yaar may be a good option for you.
 
-If you don't want to manage your own servers, microfeed can be a convenient alternative that allows you to take advantage of
+If you don't want to manage your own servers, yaar can be a convenient alternative that allows you to take advantage of
 Cloudflare's infrastructure and security features.
 
-If you don't want to pay for servers, microfeed can be a cost-effective solution, as Cloudflare provides generous free usage quotas.
+If you don't want to pay for servers, yaar can be a cost-effective solution, as Cloudflare provides generous free usage quotas.
 
-If you are looking for something new and are interested in exploring different options, microfeed could be a good choice to consider.
+If you are looking for something new and are interested in exploring different options, yaar could be a good choice to consider.
 It is always a good idea to carefully evaluate any service before using it to ensure that it meets your needs and is a good fit for your use case.
 </details>
 
 <details>
-<summary><b>How to download / backup data from microfeed / Cloudflare?</b></summary>
+<summary><b>How to download / backup data from yaar / Cloudflare?</b></summary>
 
-microfeed stores data in Cloudflare D1 and R2. Therefore, you'll download two things to backup your microfeed data:
+yaar stores data in Cloudflare D1 and R2. Therefore, you'll download two things to backup your yaar data:
 * a sqlite database from [Cloudflare D1](https://developers.cloudflare.com/d1/), including all metadata.
 * media files from [Cloudflare R2](https://developers.cloudflare.com/r2/), including audio, image, video...
 
@@ -339,15 +339,15 @@ You may need to write a script to use [S3-compatible APIs](https://developers.cl
 [Back to 📚TOC](#-table-of-contents)
 
 ## 💪 Contributions
-We welcome contributions to microfeed!
-If you have an idea for a new feature or have found a bug, please [open an issue](https://github.com/microfeed/microfeed/issues/new) in the repository.
+We welcome contributions to yaar!
+If you have an idea for a new feature or have found a bug, please [open an issue](https://github.com/yaar/yaar/issues/new) in the repository.
 If you'd like to submit a fix or new feature, please create a pull request with a detailed description of your changes.
 
-### Run microfeed on local
+### Run yaar on local
 
 Pre-requisites: node / npm, yarn, and wrangler
 
-First, create a .vars.toml file in microfeed's root directory (same level as this README.md file) and put 5 secrets in the .vars.toml file (Similar to [Step 2. Put some secrets on your forked repo](#step-2-put-some-secrets-on-your-forked-repo)):
+First, create a .vars.toml file in yaar's root directory (same level as this README.md file) and put 5 secrets in the .vars.toml file (Similar to [Step 2. Put some secrets on your forked repo](#step-2-put-some-secrets-on-your-forked-repo)):
 ```toml
 # .vars.toml
 CLOUDFLARE_PROJECT_NAME = "your-project-org"
@@ -363,11 +363,11 @@ Second, run local dev server:
 npm run dev
 ```
 
-You should be able to access to a local microfeed instance via http://127.0.0.1:8788/.
+You should be able to access to a local yaar instance via http://127.0.0.1:8788/.
 
 [Back to 📚TOC](#-table-of-contents)
 
 ## 🛡️ License
-microfeed is licensed under the [AGPL-3.0](https://github.com/microfeed/microfeed/blob/main/LICENSE) license. Please see [the LICENSE file](https://github.com/microfeed/microfeed/blob/main/LICENSE) for more information.
+yaar is licensed under the [AGPL-3.0](https://github.com/yaar/yaar/blob/main/LICENSE) license. Please see [the LICENSE file](https://github.com/yaar/yaar/blob/main/LICENSE) for more information.
 
 [Back to 📚TOC](#-table-of-contents)

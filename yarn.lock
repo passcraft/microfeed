@@ -7714,7 +7714,7 @@ __metadata:
 
 "microfeed@workspace:.":
   version: 0.0.0-use.local
-  resolution: "microfeed@workspace:."
+  resolution: "yaar@workspace:."
   dependencies:
     "@databases/split-sql-query": 1.0.3
     "@databases/sql": 3.2.0
